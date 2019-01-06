@@ -1,0 +1,795 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="WEB,angular,移动开发,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2">
+
+
+
+
+
+
+<meta name="description" content="最近因为要开发APP项目，是使用angular来开发的，所以需要学习angular，但是对于angular的加载原理和双向绑定一直是一知半解，所以下面是对这两个问题的学习。 angularjs的加载原理 angular应用启动： angular也是作为普通的js被加载的，浏览器会在构建DOM元素时加载AngularJS库（如同正常加载任意JavaScript库）。当angular.js被取回时，">
+<meta name="keywords" content="WEB,angular,移动开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="angularJS加载原理和双向数据绑定学习笔记">
+<meta property="og:url" content="http://yoursite.com/2017/05/01/angular_bootstrap/index.html">
+<meta property="og:site_name" content="Mountains">
+<meta property="og:description" content="最近因为要开发APP项目，是使用angular来开发的，所以需要学习angular，但是对于angular的加载原理和双向绑定一直是一知半解，所以下面是对这两个问题的学习。 angularjs的加载原理 angular应用启动： angular也是作为普通的js被加载的，浏览器会在构建DOM元素时加载AngularJS库（如同正常加载任意JavaScript库）。当angular.js被取回时，">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-05-01T08:15:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="angularJS加载原理和双向数据绑定学习笔记">
+<meta name="twitter:description" content="最近因为要开发APP项目，是使用angular来开发的，所以需要学习angular，但是对于angular的加载原理和双向绑定一直是一知半解，所以下面是对这两个问题的学习。 angularjs的加载原理 angular应用启动： angular也是作为普通的js被加载的，浏览器会在构建DOM元素时加载AngularJS库（如同正常加载任意JavaScript库）。当angular.js被取回时，">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'countryboy',
+      author: 'countryboy'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/05/01/angular_bootstrap/">
+
+
+  <title> angularJS加载原理和双向数据绑定学习笔记 | Mountains </title>
+</head>
+
+<body itemscope="" itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Mountains</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope="" itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                angularJS加载原理和双向数据绑定学习笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-05-01T16:07:50+08:00" content="2017-05-01">
+              2017-05-01
+            </time>
+          </span>
+
+          
+            <span class="post-category">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
+                  <a href="/categories/WEB前端开发/" itemprop="url" rel="index">
+                    <span itemprop="name">WEB前端开发</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/05/01/angular_bootstrap/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/01/angular_bootstrap/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/05/01/angular_bootstrap/" class="leancloud_visitors" data-flag-title="angularJS加载原理和双向数据绑定学习笔记">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<h6 id="最近因为要开发APP项目，是使用angular来开发的，所以需要学习angular，但是对于angular的加载原理和双向绑定一直是一知半解，所以下面是对这两个问题的学习。"><a href="#最近因为要开发APP项目，是使用angular来开发的，所以需要学习angular，但是对于angular的加载原理和双向绑定一直是一知半解，所以下面是对这两个问题的学习。" class="headerlink" title="最近因为要开发APP项目，是使用angular来开发的，所以需要学习angular，但是对于angular的加载原理和双向绑定一直是一知半解，所以下面是对这两个问题的学习。"></a>最近因为要开发APP项目，是使用angular来开发的，所以需要学习angular，但是对于angular的加载原理和双向绑定一直是一知半解，所以下面是对这两个问题的学习。</h6></blockquote>
+<h4 id="angularjs的加载原理"><a href="#angularjs的加载原理" class="headerlink" title="angularjs的加载原理"></a>angularjs的加载原理</h4><ol>
+<li><strong>angular应用启动：</strong> angular也是作为普通的js被加载的，浏览器会在构建DOM元素时加载AngularJS库（如同正常加载任意JavaScript库）。当angular.js被取回时，浏览器会执行它，同时设置一个事件监听器来监听浏览器的DOMContentLoaded事件。当浏览器触发DOMContentLoaded事件时，Angular就开始工作。它首先寻找ng-app指令，如果浏览器在DOM中找到ng-app指令，它会为我们自动启动应用。(ps:如果没有找到这个指令，也可以通过手动执行angular的bootstrap()方法来启动angular）</li>
+<li><strong>创建$rooeScope和编译DOM</strong> 一旦应用程序加载完成，$injector就会在应用程序的$rootScope旁边创建$compile服务。$rootScope创建后， $compile服务就会接管它。 它会将$rootScope与现有的DOM连接起来，<br>然后从将ng-app指令设置为祖先的地方开始编译DOM。</li>
+<li><strong>创建实时视图</strong><br>$compile服务通过遍历DOM树的方式查找有声明指令的DOM元素。当碰到带有一个或多个<br>指令的DOM元素时，它会排序这些指令（基于指令的priority优先级），然后使用$injector服务查找和收集指令的compile函数并执行它。<br>指令中的compile函数会在适当的时候处理所有DOM转换或者内联模板，如同创建模板的<br>副本。<br>// 返回一个链接函数 var linkFunction = $compile(appElement);<br>// 调用链接函数，将$rootScope附加给DOM元素 linkFunction($rootScope);<br>每个节点的编译方法运行之后，$compile服务就会调用链接函数。这个链接函数为绑定了封闭作用域的指令设置监控。这一行为会创建实时视图。<br>最后，在$compile服务完成后， AngularJS运行时就准备好了。<h3 id="双向数据绑定"><a href="#双向数据绑定" class="headerlink" title="双向数据绑定"></a>双向数据绑定</h3></li>
+<li><strong>事件监听：</strong> 在标准的浏览器流程中，事件循环会等待事件执行（比如鼠标移动、点击、按键等）。当这些事件发生时，它们会被放到浏览器的事件队列中。如果有函数处理程序对事件作出响应，浏览器就会将event对象作为参数来调用这些事件处理程序。<br>ele.addEventListener(‘click’, function(event) {});<br>Angular中对事件循环做了一点增强，并且Angular还提供了自己的事件循环。指令自身会注册事件监听器，因此当事件被触发时，指令函数就会运行在AngularJS的$digest循环中。</li>
+<li><strong>$digest循环</strong>：Angular的事件循环被称作$digest循环。这个$digest循环由两个小型的循环组成，分别是evalAsync循环和$watch列表。</li>
+<li><strong>$watch列表：</strong><br>$scope对象上的$watch方法会给Angular事件循环内的每个$digest调用装配一个脏值检查。<br>如果在表达式上检测到变化， Angular总是会返回$digest循环。<br>$watch函数本身接受两个必要参数和一个可选的参数：<br> watchExpression<br>watchExpression可以是一个作用域对象的属性，或者是一个函数。在$digest循环中的每<br>个$digest调用都会涉及它。如果watchExpression是一个字符串，Angular会在$scope上下文中对它求值。如果它是一个函数，那么Angular会认为它会返回应该被监控的值。<br> listener/callback<br>作为回调的监听器函数，它只会在watchExpression的当前值与先前值不相等（除了首次运行初始化期间）时调用。<br> objectEquality（可选）<br>objectEquality是一个进行比较的布尔值，用来告诉Angular是否检查严格相等。<br>$watch函数会给监听器返回一个注销函数，我们可以调用这个注销函数来取消Angular对当前值的监控。</li>
+<li><strong>$evalAsync方法</strong><br>$evalAsync()方法是一种在当前作用域上调度表达式在未来某个时刻运行的方式。 $digest循环运行的第二个操作是执行$$asyncQueue。可以使用$evalAsync()方法访问这个工作队列。$digest循环期间，贯穿脏值检查生命周期的每个循环之间的队列都是空的，这意味着使用$evalAsync来调用任何函数都会发生两件事情。<br> 函数会在这个方法被调用的某个时刻之后执行。<br> 表达式求值之后至少会执行一次$digest循环。<br>$evalAsync()方法接受一个唯一参数：<br> expression（字符串/函数）<br>这个表达式便是我们想要在当前作用域上执行的东西。如果传入一个字符串， Angular将会<br>在当前作用域上使用$eval求值该表达式。<br>如果传入的是一个函数， Angular将会使用传递给这个函数的scope对象执行函数求值。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$scope.$evalAsync(&apos;attribute&apos;,</span><br><span class="line">function(scope) &#123;</span><br><span class="line">scope.foo = &quot;Executed&quot;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>使用$evalAsync时要注意的一些细节。<br> 如果指令直接调用$evalAsync()，它会在Angular操作DOM之后、浏览器渲染之前运行。<br> 如果控制器调用$evalAsync()，它也会在Angular操作DOM之后、浏览器渲染之前运行 （永远不要使用$evalAsync()来约定事件的顺序）。   无论何时，在Angular中，只要你想要在一个行为的执行上下文外部执行另一个行为，就应该使用$evalAsync()函数。（关于$evalAsync队列和$evalAsync()函数，我是很困惑的，感觉像是在$digest循环执行前的一个异步队列，很难搞懂它的作用，看了这篇博<a href="http://blog.csdn.net/dm_vincent/article/details/51607018" target="_blank" rel="noopener"> [AngularJS面面观] 5. scope中的两个异步方法 - $applyAsync以及$evalAsync</a>，感觉清楚了很多，为了提高$digest循环的效率，所以有了$evalAsync队列，当有$evalAsync异步事件事，angular会在$evalAsync队列清空之后，再去做$watch检查和页面渲染，这样一个场景就是，当有多个$http请求时，不用每次请求回来就做一次页面渲染，另外这样也可以避免页面的闪烁）</p>
+<ol start="5">
+<li><strong>什么时候触发$digest循环：</strong><br>通常可以依赖于Angular提供的可用于视图中的任意指令来调用$apply()。所有ng-[event]指令（比如ng-click、 ng-keypress）都会调用$apply()。<br>此外还可以依赖于一系列Angular内置的服务来调用$digest()。比如$http服务会在XHR请<br>求完成并触发更新返回值（promise）之后调用$apply()。<br>无论何时我们手动处理事件，使用第三方框架（比如jQuery、 Facebook API） ，或者调用setTimeout()，都可以使用$apply()函数让Angular返回$digest循环。<br>（PS:在开发中我经常遇到$scope控制器变量改变了，但是视图没有变化的情况，看来是使用了非ng的指令或服务，所以需要自己手动来触发）<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4></li>
+</ol>
+<ul>
+<li>angular的加载主要是通过监听浏览器的DOMContentLoaded事件、通过编译DOM结构来创建模板DOM、和创建实时视图来完成的。</li>
+<li>angular的双向数据绑定主要是通过事件监听和脏值检查来完成的。<h4 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h4></li>
+<li><strong>DOM文档加载的步骤为</strong></li>
+</ul>
+<ol>
+<li>解析HTML结构。</li>
+<li>加载外部脚本和样式表文件。</li>
+<li>解析并执行脚本代码。</li>
+<li>DOM树构建完成。（DOMContentLoaded事件）</li>
+<li>加载图片等外部文件。</li>
+<li>页面加载完毕。（load事件）</li>
+</ol>
+<ul>
+<li><strong>手动启动一个AngularJS应用</strong><br>要手动启动一个AngularJS应用，可以使用Angular的bootstrap()方法。在一些罕见的情况<br>下手动启用应用程序是有意义的。例如，想要在某个其他库的代码运行之后，或者在运行时动态创建元素时，启动AngularJS应用。要想手动启动应用，可以像下面这样启动它：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var newElement =document.createElement(&quot;div&quot;);  </span><br><span class="line">angular.bootstrap(newElement, [&apos;myApp&apos;]);&apos;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h4><p>书本 《AngularJS权威教程》/（美）勒纳（Lerner,A.）著；赵望野，徐飞，何鹏飞译. – 北京：人民邮电出版社，2014.8</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/WEB/" rel="tag">#WEB</a>
+          
+            <a href="/tags/angular/" rel="tag">#angular</a>
+          
+            <a href="/tags/移动开发/" rel="tag">#移动开发</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/26/JAVA WEB学习笔记——JSP学习/" rel="next" title="JAVA WEB学习笔记——JSP学习">
+                <i class="fa fa-chevron-left"></i> JAVA WEB学习笔记——JSP学习
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/05/成为JAVA顶尖程序员，先过了下面问题（解答一）/" rel="prev" title="成为JAVA顶尖程序员，先过了下面问题（解答一）">
+                成为JAVA顶尖程序员，先过了下面问题（解答一） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2017/05/01/angular_bootstrap/" data-title="angularJS加载原理和双向数据绑定学习笔记" data-content="" data-url="http://yoursite.com/2017/05/01/angular_bootstrap/">
+  <div class="ds-share-inline">
+    <ul class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/05/01/angular_bootstrap/" data-title="angularJS加载原理和双向数据绑定学习笔记" data-url="http://yoursite.com/2017/05/01/angular_bootstrap/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/actor.jpg" alt="Country boy">
+          <p class="site-author-name" itemprop="name">Country boy</p>
+          <p class="site-description motion-element" itemprop="description">How many times must a man look up,Before he can see the sky</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives/">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#最近因为要开发APP项目，是使用angular来开发的，所以需要学习angular，但是对于angular的加载原理和双向绑定一直是一知半解，所以下面是对这两个问题的学习。"><span class="nav-number">1.</span> <span class="nav-text">最近因为要开发APP项目，是使用angular来开发的，所以需要学习angular，但是对于angular的加载原理和双向绑定一直是一知半解，所以下面是对这两个问题的学习。</span></a></li></ol><li class="nav-item nav-level-4"><a class="nav-link" href="#angularjs的加载原理"><span class="nav-number"></span> <span class="nav-text">angularjs的加载原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#双向数据绑定"><span class="nav-number"></span> <span class="nav-text">双向数据绑定</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#总结"><span class="nav-number"></span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#附录"><span class="nav-number"></span> <span class="nav-text">附录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#学习资料"><span class="nav-number"></span> <span class="nav-text">学习资料</span></a></li></ol></li></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Country boy</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"countryboy"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("OCXhhvuUszfd9WxkAVBXpg8Q-gzGzoHsz", "tInXTpkeFTOPD1e7SbvAOiRB");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+  
+
+
+</body>
+</html>

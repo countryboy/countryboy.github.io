@@ -1,0 +1,1081 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="java学习,数据结构,线程,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2">
+
+
+
+
+
+
+<meta name="description" content="一、数据结构与算法 说一下几种常见的排序算法和分别的复杂度。解答：      排序方法 时间复杂度（平均） 时间复杂度（最坏） 时间复杂度（最好） 空间复杂度 稳定性 复杂性     直接插入排序 O(n^2） O(n^2） O(n^2） O(1) 稳定 简单   希尔排序 O(nlog2n） O(nlog2n)  O(1) 稳定 简单   冒泡排序 O(n^2） O(n^2） O(n） O(1)">
+<meta name="keywords" content="java学习,数据结构,线程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="成为JAVA顶尖程序员，先过了下面问题（解答一）">
+<meta property="og:url" content="http://yoursite.com/2019/01/05/成为JAVA顶尖程序员，先过了下面问题（解答一）/index.html">
+<meta property="og:site_name" content="Mountains">
+<meta property="og:description" content="一、数据结构与算法 说一下几种常见的排序算法和分别的复杂度。解答：      排序方法 时间复杂度（平均） 时间复杂度（最坏） 时间复杂度（最好） 空间复杂度 稳定性 复杂性     直接插入排序 O(n^2） O(n^2） O(n^2） O(1) 稳定 简单   希尔排序 O(nlog2n） O(nlog2n)  O(1) 稳定 简单   冒泡排序 O(n^2） O(n^2） O(n） O(1)">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-01-06T04:33:51.979Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="成为JAVA顶尖程序员，先过了下面问题（解答一）">
+<meta name="twitter:description" content="一、数据结构与算法 说一下几种常见的排序算法和分别的复杂度。解答：      排序方法 时间复杂度（平均） 时间复杂度（最坏） 时间复杂度（最好） 空间复杂度 稳定性 复杂性     直接插入排序 O(n^2） O(n^2） O(n^2） O(1) 稳定 简单   希尔排序 O(nlog2n） O(nlog2n)  O(1) 稳定 简单   冒泡排序 O(n^2） O(n^2） O(n） O(1)">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'countryboy',
+      author: 'countryboy'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/01/05/成为JAVA顶尖程序员，先过了下面问题（解答一）/">
+
+
+  <title> 成为JAVA顶尖程序员，先过了下面问题（解答一） | Mountains </title>
+</head>
+
+<body itemscope="" itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Mountains</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope="" itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                成为JAVA顶尖程序员，先过了下面问题（解答一）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2019-01-05T11:50:50+08:00" content="2019-01-05">
+              2019-01-05
+            </time>
+          </span>
+
+          
+            <span class="post-category">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
+                  <a href="/categories/java学习-数据结构-线程-jvm/" itemprop="url" rel="index">
+                    <span itemprop="name">java学习 数据结构 线程 jvm</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2019/01/05/成为JAVA顶尖程序员，先过了下面问题（解答一）/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/01/05/成为JAVA顶尖程序员，先过了下面问题（解答一）/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2019/01/05/成为JAVA顶尖程序员，先过了下面问题（解答一）/" class="leancloud_visitors" data-flag-title="成为JAVA顶尖程序员，先过了下面问题（解答一）">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="一、数据结构与算法"><a href="#一、数据结构与算法" class="headerlink" title="一、数据结构与算法"></a>一、数据结构与算法</h4><ul>
+<li>说一下几种常见的排序算法和分别的复杂度。<br><strong>解答：</strong></li>
+</ul>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th>排序方法</th>
+<th>时间复杂度（平均）</th>
+<th>时间复杂度（最坏）</th>
+<th>时间复杂度（最好）</th>
+<th>空间复杂度</th>
+<th>稳定性</th>
+<th>复杂性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>直接插入排序</td>
+<td>O(n^2）</td>
+<td>O(n^2）</td>
+<td>O(n^2）</td>
+<td>O(1)</td>
+<td>稳定</td>
+<td>简单</td>
+</tr>
+<tr>
+<td>希尔排序</td>
+<td>O(nlog2n）</td>
+<td>O(nlog2n)</td>
+<td></td>
+<td>O(1)</td>
+<td>稳定</td>
+<td>简单</td>
+</tr>
+<tr>
+<td>冒泡排序</td>
+<td>O(n^2）</td>
+<td>O(n^2）</td>
+<td>O(n）</td>
+<td>O(1)</td>
+<td>稳定</td>
+<td>简单</td>
+</tr>
+<tr>
+<td>快速排序</td>
+<td>O(nlog2n)</td>
+<td>O(n^2）</td>
+<td>O(nlog2n)</td>
+<td>O(nlog2n)</td>
+<td>不稳定</td>
+<td>较复杂</td>
+</tr>
+<tr>
+<td>直接选择排序</td>
+<td>O(n^2）</td>
+<td>O(n^2）</td>
+<td>O(n^2）</td>
+<td>O(1)</td>
+<td>不稳定</td>
+<td>简单</td>
+</tr>
+<tr>
+<td>堆排序</td>
+<td>O(nlog2n)</td>
+<td>O(nlog2n)</td>
+<td>O(nlog2n)</td>
+<td>O(1)</td>
+<td>稳定</td>
+<td>较复杂</td>
+</tr>
+<tr>
+<td>归并排序</td>
+<td>O(nlog2n)</td>
+<td>O(nlog2n)</td>
+<td>O(nlog2n)</td>
+<td>O(n)</td>
+<td>稳定</td>
+<td>较复杂</td>
+</tr>
+<tr>
+<td>基数排序</td>
+<td>O(d(n+r))</td>
+<td>O(d(n+r))</td>
+<td>O(d(n+r))</td>
+<td>O(n+r)</td>
+<td>稳定</td>
+<td>较复杂</td>
+</tr>
+</tbody>
+</table>
+<p>其中堆排序和归并排序可以进行外排序<br>外排序的一种思路<br>1）按数据的大小对数据分K个块进行读取，并对每个文件块按一定的算法进行排序（一般为快速排序）<br>2）在内存维护一个K大小的堆，将每个文件的第一个元素读取进行，进行堆排序<br>3）将堆顶的元素拿出，放入临时数组，并将该堆顶元素所在文件的下一个元素拿出，继续维护该堆<br>4）当临时数据达到一定大小时，将临时数组写入磁盘文件，并清空数据<br>5）重复3、4两步操作，知道所有的元素都读取完  </p>
+<ul>
+<li>用JAVA写一个冒泡排序算法<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">// 递归实现快速排序算法</span><br><span class="line">	static void quickSort(int start, int end, int[] T) &#123;</span><br><span class="line">		if (T.length == 0 || start &gt;= end) &#123;</span><br><span class="line">			return;</span><br><span class="line">		&#125;</span><br><span class="line">		int key = T[start];</span><br><span class="line">		int temp;</span><br><span class="line">		int i = start;</span><br><span class="line">		int j = end;</span><br><span class="line"></span><br><span class="line">		while (i != j) &#123;</span><br><span class="line">			for (; i != j; j--) &#123;</span><br><span class="line">				if (key &gt; T[j]) &#123;</span><br><span class="line">					temp = T[i];</span><br><span class="line">					T[i] = T[j];</span><br><span class="line">					T[j] = temp;</span><br><span class="line">					break;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			if (j == i) &#123;</span><br><span class="line">				break;</span><br><span class="line">			&#125;</span><br><span class="line">			for (; i != j; i++) &#123;</span><br><span class="line">				if (key &lt; T[i]) &#123;</span><br><span class="line">					temp = T[i];</span><br><span class="line">					T[i] = T[j];</span><br><span class="line">					T[j] = temp;</span><br><span class="line">					break;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		quickSort(start, i - 1, T);</span><br><span class="line">		quickSort(i + 1, end, T);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>描述一下链式存储结构。<br><strong>解答：</strong>  <blockquote>
+<p>每个节点由数据域和指针域组成，可以以O(1)的时间复杂度进行的删除和新增，但是查询的时间复杂度为O(n)，在逻辑上不必是连续的内存区域，可以比较方便的实现队列和栈。</p>
+</blockquote>
+</li>
+<li>如何遍历一棵二叉树？  <blockquote>
+<p> 可以使用先序遍历、中序遍历和后序遍历</p>
+</blockquote>
+</li>
+<li><p>倒排一个LinkedList。<br><strong>解答:</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">static public void linkedlistSort(LinkedList&lt;Integer&gt; T)&#123;</span><br><span class="line">		int linksize = T.size();</span><br><span class="line">		int temp ;</span><br><span class="line">		for (int i = 0; i &lt; linksize -1; i++) &#123;</span><br><span class="line">			for (int j = i +1; j &lt; linksize ; j++) &#123;</span><br><span class="line">				if(T.get(i) &lt; T.get(j) )</span><br><span class="line">				&#123;</span><br><span class="line">					temp = T.get(j);</span><br><span class="line">					T.set(j,T.get(i));</span><br><span class="line">					T.set(i,temp);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用Java写一个递归遍历目录下面的所有文件。<br><strong>解答：</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">//遍历读取文件夹下的文件</span><br><span class="line">	public static List&lt;File&gt; getFileList(String strPath) &#123;</span><br><span class="line">        File dir = new File(strPath);</span><br><span class="line">        File[] files = dir.listFiles(); // 该文件目录下文件全部放入数组</span><br><span class="line">        String fileName = dir.getName();</span><br><span class="line">        if (files != null) &#123;</span><br><span class="line">            for (int i = 0; i &lt; files.length; i++) &#123;</span><br><span class="line">                if (files[i].isDirectory()) &#123; // 判断是文件还是文件夹</span><br><span class="line">                    String strFileName = files[i].getName();</span><br><span class="line">                    System.out.println(strFileName);</span><br><span class="line">                    getFileList(files[i].getAbsolutePath()); // 获取文件绝对路径</span><br><span class="line">                &#125; else &#123; </span><br><span class="line">                    String strFileName = files[i].getName();</span><br><span class="line">                    System.out.println(&quot;    ---&quot; + strFileName);</span><br><span class="line">                    filelist.add(files[i]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return filelist;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="二、JAVA基础"><a href="#二、JAVA基础" class="headerlink" title="二、JAVA基础"></a>二、JAVA基础</h4><ul>
+<li>接口与抽象类的区别？<br><strong>解答：</strong>   <blockquote>
+<p>接口和抽象类的相同点：<br>1）两个都是上层的抽象对象<br>2）接口和抽象类都不能被实例化<br>3）接口和抽象类都可以包含抽象方法<br>4）所有子类去继承抽象类和实现接口，如果要进行实例化，就必须实现他们全部的抽象方法<br>接口和抽象类的不同点：<br>1）接口只能包含抽象方法、抽象类可以有非抽象方法<br>2）一个子类只能继承一个抽象类，但是可以继承多个接口</p>
+</blockquote>
+</li>
+<li>Java中的异常有哪几类？分别怎么使用？<br><strong>解答：</strong><blockquote>
+<p>主要有Error和Exception两大类,Exception下又分为RuntimeException异常和非运行时异常。其中RuntimeException异常及其子类为可检查异常，其他异常为不可检查异常。<br>Error异常有：NoClassDeffoundError,InternalError,OutOfMemoryError,StackOverflowError,UnknownError<br>RuntimeException: NullPointerException,ClassCastException,ArithmeticException,ArrayIndexOutOfBoundException</p>
+</blockquote>
+</li>
+<li>常用的集合类有哪些？比如List如何排序？<br><strong>解答：</strong><blockquote>
+<p>集合主要有Map和Collection两大类。<br>Map主要有：<br>HashMap：最基本的Map类型，键值可以为null，是线程不安全的。<br>Hashtable：线程安全的Map，键值不能为空，但是因为实现了线程安全，所以效率较HashMap低。<br>ConcurrentHashMap：实现了线程安全的HashMap，根据key值，将一个HashMap分成了N个Segment，对每一段进行加锁，以此来提升了执行效率，默认是分成16段。<br>Collection主要有：<br>Vector：线程安全的集合。<br>ArrayList： 基于数组实现的，大小可变的数据集合。<br>LinkedList： 基于链式结构实现的集合，新增和删除的效率高于ArrayList。<br>HashSet： 基于HashMap实现的，所以不能有重复的数据。  </p>
+</blockquote>
+</li>
+<li>ArrayList和LinkedList内部的实现大致是怎样的？他们之间的区别和优缺点？<br><strong>解答：</strong>  <blockquote>
+<p>ArrayList是基于数组实现的，LinkedList是基于链式结构实现的，所以ArrayList查找效率更高，LinkedList进行新增和删除的效率更高。</p>
+</blockquote>
+</li>
+<li>内存溢出是怎么回事？请举一个例子？<br><strong>解答：</strong>  <blockquote>
+<p>内存溢出是因为JVM没有可以分配的内存空间了，主要有PermGen space不足和Java heap space不足，PermGen space空间不够，主要是引用的class太多;堆空间不足，可能是由于内存泄露，或者是创建了较多的大对象，并没有及时释放。</p>
+</blockquote>
+</li>
+<li>==和equals的区别？<br><strong>解答：</strong>  <blockquote>
+<p>==比较的是引用地址，equals比较的是他们的值，一般来说，对于基本数据类型来说，==和uquals比较的结果是一样的</p>
+</blockquote>
+</li>
+<li>hashCode方法的作用？<br><strong>解答：</strong>  <blockquote>
+<p>hashCode是JAVA的基类Object实现的一个方法，可以理解为对一个JAVA对象的Hash编码之后的一个整型数值，在HashMap中，就是基于hashCode值来进行存储数据的。</p>
+</blockquote>
+</li>
+<li>NIO是什么？适用于何种场景？<br><strong>解答：</strong><blockquote>
+<p>是非阻塞的IO，管道（Channel），缓冲（Buffer） ，选择器（ Selector）是其主要特征。<br>如果需要管理同时打开的成千上万个连接，这些连接每次只是发送少量的数据，例如聊天服务器，这时候用NIO处理数据可能是个很好的选择。<br>而如果只有少量的连接，而这些连接每次要发送大量的数据，这时候传统的IO更合适。使用哪种处理数据，需要在数据的响应等待时间和检查缓冲区数据的时间上作比较来权衡选择。</p>
+</blockquote>
+</li>
+<li>HashMap实现原理，如何保证HashMap的线程安全？<br><strong>解答：</strong><blockquote>
+<p>HashMap是基于数组和链式来实现的一个数据结构，初始的数组大小为16，负载因子为0.75，HashMap是使用hashCode来和数据的大小来进行运算来获取它在数组中的位置的，当两个key的hashCode值一样，那么就会使用使用链式来存储在位置的数据，当HashMap的大小超过数据大小*负载因子大小的容量，那么就会进行扩容和rehashing，将HashMap中的数据重新调整位置。保证HashMap的线程安全可以使用synchronized关键字，或者lock对象，或者直接使用ConcurrentHashMap来保证线程安全。</p>
+</blockquote>
+</li>
+<li>JVM内存结构，为什么需要GC？<br><strong>解答：</strong> <blockquote>
+<p>分为方法区(Method Area)、java堆(Heap)、java栈(Stack)、程序计数器(PC Register)、本地方法栈(Native Method Stack)。GC主要指的是JVM的堆内存空间回收，堆的内存有点类似内存池的概念，JAVA每次新建对象的时候都去申请，当使用完之后就有JVM来进行GC操作，这样可以使每次使用内存不用都向操作系统申请，使用完之后，或者使用多次时候，保证内存空间都能够被及时释放和清理。</p>
+</blockquote>
+</li>
+<li>NIO模型，select/epoll的区别，多路复用的原理<br><strong>解答：</strong><br>1.支持一个进程所能打开的最大连接数  </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>select</th>
+<th style="text-align:left">单个进程所能打开的最大链接数由FD_SETSIZE宏定义，其大小（在32位的机器上，大小就是32<em>32，同理64位机器上FD_SETSIZE为32</em>64），当然我们可以进行修改，然后重新编译内核，但是性能可能会受到影响，这需要进一步测试</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>epoll</td>
+<td style="text-align:left">虽然链接数目有限制，但是很大，1G内存的机器上可以打开10万左右的链接，2G内存的机器可以打开20万左右</td>
+</tr>
+</tbody>
+</table>
+<p>2.FD剧增后带来的IO效率问题</p>
+<table>
+<thead>
+<tr>
+<th>select</th>
+<th style="text-align:left">因为每次调用都会对链接进行线性遍历，所以随着FD的增加会造成遍历速度慢的“线性下降性能问题”</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>epoll</td>
+<td style="text-align:left">因为epoll内核中是根据每个fd上的callback函数来实现的，只有活跃的socket才会主动调用callback，所以在活跃socket较少的情况下，使用epoll没有select的线性下降的性能问题，但是所有socket都很活跃的情况下，可能会有性能问题</td>
+</tr>
+</tbody>
+</table>
+<p>3.消息传递方式</p>
+<table>
+<thead>
+<tr>
+<th>select</th>
+<th style="text-align:left">内核需要将消息传递到用户空间，都需要内核拷贝动作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>epoll</td>
+<td style="text-align:left">epoll通过内核和用户空间共享一块内存来实现</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>I/O多路复用就是通过一种机制，一个进程可以监视多个描述符，一旦某个描述符就绪（一般是读就绪或者写就绪），能够通知程序进行相应的读写操作。</p>
+<ul>
+<li>Java中一个字符占多少个字节，扩展再问int, long, double占多少字节<br><strong>解答：</strong><br>1字节： byte , boolean<br>2字节： short , char<br>4字节： int , float<br>8字节： long , double</li>
+<li>创建一个类的实例都有哪些办法？<br><strong>解答：</strong><br>有以下几种，1.new关键字；2.使用class.newInstance()；3.类实现clone接口；4.实现序列化接口的类，通过IO流反序列化读取一个类，获取实例。</li>
+<li>final/finally/finalize的区别？<br><strong>解答：</strong><br>final可以用来修饰类，修饰类的时候表明，这个类不能被继承，也可以修改变量，修饰变量的时候表明这个变量不能被修改，也可以修改方法，表明这个方法不能被重写。<br>finnally是用来异常处理的时候使用的，当执行异常处理try，catch的时候，他们后面的的finnally块总是被执行到，不管这个异常有没有被执行。<br>finalize是在Object类中定义的一个方法，是在该对象执行垃圾回收前执行的方法，用来做一些垃圾回收前的清理工作，该方法可以被重写。</li>
+<li>Session/Cookie的区别？<br><strong>解答：</strong><br>Session为服务器保证的用户的登录当前的会话信息，保存在应用服务器内存中，一般服务器重启后就会删除，用户保存用户当前的登录情况。cookie在浏览器存储用户数据的一种手段，可以设置有效期，在浏览器也可以获取，是一种不安全的用户数据存储手段，一般用户的会话管理会结合cookie和session一起来使用，当用户第一次登录，在服务器生成sessionId，返回后保存在cookie中，当再次请求之后，会在每次请求中带上当前用户的登录sessionId，一次来验证用户已经登录。</li>
+<li>String/StringBuffer/StringBuilder的区别，扩展再问他们的实现？<br><strong>解答：</strong><br>String是字符串常量池，StringBuffer是可变的字符对象，StringBuilder和StringBuffer类似，但是StringBuffer对方法都用synchronized进行了修饰，所以StringBuffer是线程安全的，StringBuffer的效率较高一些。</li>
+<li>Servlet的生命周期？<br><strong>解答:</strong><br>Servlet的生命周期包括实例化-》初始化-》服务-》销毁。<br>实例化：默认是web端第一次访问Servlet的时候实例化，如果在web.xml中配置了load-on-startup，则在服务启动的时候就创建。<br>初始化：调用init方法，为第一次访问的使用调用。<br>服务：调用service方法，为Servlet最终要的方法，通过Service方法来提供服务。<br>销毁：当服务停用的时候来进行销毁，此时会调用destory方法。  </li>
+<li>如何用Java分配一段连续的1G的内存空间？需要注意些什么？<br><strong>解答:</strong><br>可以直接使用new对象来初始化数组，但是创建的空间大小一般只能为JVM设置的Xmx空间的一半，所以这样的话，Xmx至少要是2G空间。另外也可以使用sun.misc.Unsafe的来进行内存分配，这个和C语言中的malloc很像，是直接操作系统的内存空间，所以可以申请任意大小的内存空间，但是这样申请的内存需要自己进行垃圾回收，JVM无法进行回收。</li>
+<li>Java有自己的内存回收机制，但为什么还存在内存泄露的问题呢？<br><strong>解答：</strong><br>因为通常我们认为的无效对象的方式的jvm判定的方式是不一样的，jvm通过判断该对象是否有被引用来进行内存回收，但是某些情况下，对象已经不被使用了，但是还依然有被引用,例如下面的例子，o对象每次处理完被置空了，但是由于依然被引用，所以不会被jvm回收<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Vector v = new  Vector( 10 );  </span><br><span class="line"> for  ( int  i = 1 ;i &lt; 100 ; i ++ )&#123;  </span><br><span class="line"> Object o = new  Object();  </span><br><span class="line"> v.add(o);  </span><br><span class="line"> o = null ;  </span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<ul>
+<li>什么是java序列化，如何实现java序列化?(写一个实例)？<br><strong>解答：</strong><blockquote>
+<p>序列化是一种对象持久化的手段,通过java序列化，可以将是JAVA在JVM重启后被重新加载该对象，除了在持久化对象时会用到对象序列化之外，当使用RMI(远程方法调用)，或在网络中传递对象时，都会用到对象序列化。<br><strong>序列化及反序列化相关知识</strong><br>1、在Java中，只要一个类实现了java.io.Serializable接口，那么它就可以被序列化。<br>2、通过ObjectOutputStream和ObjectInputStream对对象进行序列化及反序列化<br>3、虚拟机是否允许反序列化，不仅取决于类路径和功能代码是否一致，一个非常重要的一点是两个类的序列化 ID 是否一致（就是 private static final long serialVersionUID）<br>4、序列化并不保存静态变量。<br>5、要想将父类对象也序列化，就需要让父类也实现Serializable 接口。<br>6、Transient 关键字的作用是控制变量的序列化，在变量声明前加上该关键字，可以阻止该变量被序列化到文件中，在被反序列化后，transient 变量的值被设为初始值，如 int 型的是 0，对象型的是 null。<br>7、服务器端给客户端发送序列化对象数据，对象中有一些数据是敏感的，比如密码字符串等，希望对该密码字段在序列化时，进行加密，而客户端如果拥有解密的密钥，只有在客户端进行反序列化时，才可以对密码进行读取，这样可以一定程度保证序列化对象的数据安全。</p>
+</blockquote>
+</li>
+<li>String s = new String(“abc”);创建了几个 String Object?<br><strong>解答：</strong><blockquote>
+<p>2个，使用引号“”加字符的方式，也会创建一个String Object，然后以new方式去创建String的时候，会新建一个String Object。</p>
+</blockquote>
+<h4 id="三、JVM"><a href="#三、JVM" class="headerlink" title="三、JVM"></a>三、JVM</h4></li>
+<li>JVM堆的基本结构。<br><strong>解答：</strong><blockquote>
+<p>主要划分为新生代和旧生代，奇珍新生代又被划分为Eden空间和两块较小的Survivor空间。</p>
+</blockquote>
+</li>
+<li>JVM的垃圾算法有哪几种？CMS垃圾回收的基本流程？<br><strong>解答：</strong><blockquote>
+<p>主要有标记清除算法和复制算法，还有在此基础上的标记整理算法。<br>CMS垃圾回收主要分为以下四个阶段:<br>1).初始标记阶段<br>暂停所有的其他线程，并记录下直接与root相连的对象。<br>2).并发标记阶段<br>同时开启GC和用户线程，用一个闭包结构去记录可达对象。但在这个阶段结束，这个闭包结构并不能保证包含当前所有的可达对象。因为用户线程可能会不断的更新引用域，所以GC线程无法保证可达性分析的实时性。所以这个算法里会跟踪记录这些发生引用更新的地方。<br>3).最终确认标记阶段<br>将上一阶段做了指针更新的区域和root合并为一个伪root集合，并对其做tracing。从而可以保证真正可达的对象一定被标记了。但同时也会产生一部分被标记为可达，但其实已经是不可达的区域，由于已经没有了到达这个区域的路径，所以并没有办法将它的标志位置为0，则造成了一个暂时的内存泄漏，但这部分空间会在下一次收集阶段被清扫掉。<br>4).并发清扫阶段<br>开启用户线程，同时GC线程开始对为标记的区域做清扫。这个过程要注意不要清扫了刚被用户线程分配的对象。一个小trick就是在这个阶段，将所有新分配的对象置为可达的。 </p>
+</blockquote>
+</li>
+<li>JVM有哪些常用启动参数可以调整，描述几个？<br><strong>解答：</strong>  <blockquote>
+<p>各主要JVM启动参数的作用如下：<br>-Xms：设置jvm内存的初始大小<br>-Xmx：设置jvm内存的最大值<br>-Xmn：设置新域的大小（这个似乎只对jdk1.4来说是有效的，后来就废弃了）<br>-Xss：设置每个线程的堆栈大小(也就是说,在相同物理内存下，减小这个值能生成更多的线程)<br>-XX：NewRatio:设置新域与旧域之比，如-XX：NewRatio=4就表示新域与旧域之比为1：4<br>-XX:NewSize：设置新域的初始值<br>-XX:MaxNewSize：设置新域的最大值<br>-XX:MaxPermSize：设置永久域的最大值<br>-XX:SurvivorRatio=n:设置新域中Eden区与两个Survivor区的比值。（Eden区主要是用来存放新生的对象，而两个Survivor区则用来存放每次垃圾回收后存活下来的对象）  </p>
+</blockquote>
+</li>
+<li>如何查看JVM的内存使用情况？<br><strong>解答：</strong>  <blockquote>
+<p>可以使用jmap程序、jstat程序、JDK自带的工具软件，比如jconsole或者jvisualVM,或者其他JVM内存查看和分析软件，比如 jprofiler。</p>
+</blockquote>
+</li>
+<li>Java程序是否会内存溢出，内存泄露情况发生？举几个例子。<br><strong>解答：</strong><blockquote>
+<p>会有内存溢出和泄露的情况。<br>主要有栈溢出：比如进行函数递归调用的时候没有出口。<br>堆溢出：主要是创建了大量大对象的引用，一般是对容器中添加了对象，或者对static变量进行对象的创建等。<br>方法区溢出：主要是创建了内存中加载了大量的class，可能是使用反射的方法创建的。<br>比如对于一些容器创建大量大的对象，或者对static变量进行赋值操作。</p>
+</blockquote>
+</li>
+<li>你常用的JVM配置和调优参数都有哪些？分别什么作用？<br><strong>解答：</strong> <blockquote>
+<p>堆设置<br>-Xms:初始堆大小<br>-Xmx:最大堆大小<br>-XX:NewSize=n:设置年轻代大小<br>-XX:NewRatio=n:设置年轻代和年老代的比值。如:为3，表示年轻代与年老代比值为1：3，年轻代占整个年轻代年老代和的1/4<br>-XX:SurvivorRatio=n:年轻代中Eden区与两个Survivor区的比值。注意Survivor区有两个。如：3，表示Eden：Survivor=3：2，一个Survivor区占整个年轻代的1/5<br>-XX:MaxPermSize=n:设置持久代大小<br>收集器设置<br>-XX:+UseSerialGC:设置串行收集器<br>-XX:+UseParallelGC:设置并行收集器<br>-XX:+UseParalledlOldGC:设置并行年老代收集器<br>-XX:+UseConcMarkSweepGC:设置并发收集器<br>垃圾回收统计信息<br>-XX:+PrintGC<br>-XX:+PrintGCDetails<br>-XX:+PrintGCTimeStamps<br>-Xloggc:filename<br>并行收集器设置<br>-XX:ParallelGCThreads=n:设置并行收集器收集时使用的CPU数。并行收集线程数。<br>-XX:MaxGCPauseMillis=n:设置并行收集最大暂停时间<br>-XX:GCTimeRatio=n:设置垃圾回收时间占程序运行时间的百分比。公式为1/(1+n)<br>并发收集器设置<br>-XX:+CMSIncrementalMode:设置为增量模式。适用于单CPU情况。<br>-XX:ParallelGCThreads=n:设置并发收集器年轻代收集方式为并行收集时，使用的CPU数。并行收集线程数。  </p>
+</blockquote>
+</li>
+<li>JVM的内存结构？<br><strong>解答：</strong><blockquote>
+<p>分为方法区(Method Area)、java堆(Heap)、java栈(Stack)、程序计数器(PC Register)、本地方法栈(Native Method Stack)。</p>
+</blockquote>
+</li>
+<li>常用的GC策略，什么时候会触发YGC，什么时候触发FGC？<br><strong>解答：</strong><blockquote>
+<p>常用的GC策略有串行&amp;并行、并行&amp;stop the world，压缩&amp;非压缩%COPY。YGC触发的条件：edn空间不足。    FGC触发的条件：1.old空间不足 2.perm空间不足 3.显示调用System.gc() ，包括RMI等的定时触发 4.YGC时的悲观策略 5.dump live的内存信息时(jmap –dump:live)。</p>
+</blockquote>
+<h4 id="四、多线程和并发"><a href="#四、多线程和并发" class="headerlink" title="四、多线程和并发"></a>四、多线程和并发</h4></li>
+<li>如何创建线程？如何保证线程安全？<br><strong>解答：</strong><blockquote>
+<p>创建线程有三种方式，1.继承Thread类，并重写run方法2.定义runnable接口的实现类，并重写该接口的run()方法3.创建Callable接口的实现类，并实现call()方法，该call()方法将作为线程执行体，创建Callable实现类的实例，使用FutureTask类来包装Callable对象，使用FutureTask对象作为Thread对象的target创建并启动新线程。确保线程安全的方法有这几个：竞争与原子操作、同步与锁、可重入、过度优化volatile关键字。</p>
+</blockquote>
+</li>
+<li>如何实现一个线程安全的数据结构<br><strong>解答：</strong><blockquote>
+<p>使用volatile定义一个信号量，对共享资源进行信号量标记。</p>
+</blockquote>
+</li>
+<li>HashMap在多线程环境下使用需要注意什么？为什么？<br><strong>解答：</strong><blockquote>
+<p>需要注意数据同步问题，因为HashMap是非同步的数据结构，如果需要数据同步，可以使用Hashtable或者ConcurrentHashMap。</p>
+</blockquote>
+</li>
+<li>Java程序中启动一个线程是用run()还是start()？<br><strong>解答：</strong><blockquote>
+<p>如果是通过继承Thread类方式实现的线程，那么就使用start()方法来启动线程，如果是实现runnable接口的类，那么是通过run()方法来启动。</p>
+</blockquote>
+</li>
+<li>什么是守护线程？有什么用？<br><strong>解答：</strong><blockquote>
+<p>在JAVA中守护线程就是调用了SETDAEMON（）方法的线程，即后台线程.守护线程的作用是为非后台线程服务。</p>
+</blockquote>
+</li>
+<li>什么是死锁？如何避免<br><strong>解答：</strong>  <blockquote>
+<p>死锁指的是系统中两个以上的进程由于争夺资源，而相互等待的现象。<br><strong>造成死锁的必要条件</strong>有1、互斥条件2、请求和保持条件3、不剥夺条件4、环路等待条件。<br>死锁的解决：<br>〈1〉打破互斥条件。即允许进程同时访问某些资源。但是，有的资源是不允许被同时访问的，像打印机等等，这是由资源本身的属性所决定的。所以，这种办法并无实用价值。<br>〈2〉打破不可抢占条件。即允许进程强行从占有者那里夺取某些资源。就是说，当一个进程已占有了某些资源，它又申请新的资源，但不能立即被满足时，它必须释放所占有的全部资源，以后再重新申请。它所释放的资源可以分配给其它进程。这就相当于该进程占有的资源被隐蔽地强占了。这种预防死锁的方法实现起来困难，会降低系统性能。<br>〈3〉打破占有且申请条件。可以实行资源预先分配策略。即进程在运行前一次性地向系统申请它所需要的全部资源。如果某个进程所需的全部资源得不到满足，则不分配任何资源，此进程暂不运行。只有当系统能够满足当前进程的全部资源需求时，才一次性地将所申请的资源全部分配给该进程。由于运行的进程已占有了它所需的全部资源，所以不会发生占有资源又申请资源的现象，因此不会发生死锁。<br>〈4〉打破循环等待条件，实行资源有序分配策略。采用这种策略，即把资源事先分类编号，按号分配，使进程在申请，占用资源时不会形成环路。所有进程对资源的请求必须严格按资源序号递增的顺序提出。进程占用了小号资源，才能申请大号资源，就不会产生环路，从而预防了死锁。</p>
+</blockquote>
+</li>
+<li>线程和进程的差别是什么？<br><strong>解答：</strong><blockquote>
+<p>进行是操作系统分配资源的最小单位，线程是程序执行的最小单位</p>
+</blockquote>
+</li>
+<li>ConcurrentHashMap的实现原理是？<br><strong>解答：</strong> <blockquote>
+<p>ConcurrentHashMap是在HashMap的基础上，实现了线程安全，它通过分段锁的概念，区别于HashTbale，它并不是将所有数据都加锁，而是将整个数据分成了很多段来分别加锁，这样，在执行的执行的时候，如果不是自己数据所在的段，则不会加锁，以此提高了执行的效率。</p>
+</blockquote>
+</li>
+<li>sleep和wait区别<br><strong>解答：</strong>   <blockquote>
+<p>sleep是Thread的方法，调用之后只是暂时放弃cpu的执行给其他线程，但是线程依然持有对象锁，当指定的时间到了之后又会自动恢复运行状态；wait是Object的方法，当调用wait()方法的时候，线程会放弃对象锁，进入等待此对象的等待锁定池，只有针对此对象调用notify()方法后本线程才进入对象锁定池准备，<br>获取对象锁进入运行状态。</p>
+</blockquote>
+</li>
+<li>notify和notifyAll区别<br><strong>解答：</strong>   <blockquote>
+<p>notify是随机唤醒一个处于wait状态的线程，notifyAll是唤醒全部的处于wait状态的线程，此时所有的线程都会处于该对象的锁池中，可以参与该对象锁的竞争。</p>
+</blockquote>
+</li>
+<li>volatile关键字的作用<br><strong>解答：</strong> <blockquote>
+<p>volatile具有两大特性：禁止重排序、内存可见性，可以保证在程序执行的过程中，永远获取到内存中最新的数据。</p>
+</blockquote>
+</li>
+<li>ThreadLocal的作用与实现<br><strong>解答：</strong> <blockquote>
+<p>作用：保存每个线程自己的局部变量，避免和其他线程产生冲突。<br>实现：在ThreadLocal内部，有一个Map来维护每个线程自己的副本。</p>
+</blockquote>
+</li>
+<li>两个线程如何串行执行<br><strong>解答：</strong> <blockquote>
+<p>可以使用Thread的join方法，分为a,b两个线程，可以在线程b执行的时候，使用a.join()方法，等待a执行完，再执行b，就可以达到串行执行的效果，也可以定义个volatile标记变量，来标记是否有线程执行中，如果有线程执行中，则等待线程a执行。</p>
+</blockquote>
+</li>
+<li>上下文切换是什么含义<br><strong>解答：</strong> <blockquote>
+<p>指多个线程运行时，cpu切换当前正在运行的线程，会切换当前线程的方法区和计数器等。</p>
+</blockquote>
+</li>
+<li>可以运行时kill掉一个线程吗？<br><strong>解答：</strong> <blockquote>
+<p>可以，可以设置一个标志位，让线程正常运行结束run方法，正常结束，也可以使用stop方法，强制结束线程；或者使用interrupt()方法，让线程中断。</p>
+</blockquote>
+</li>
+<li>什么是条件锁、读写锁、自旋锁、可重入锁？<br><strong>解答：</strong> <blockquote>
+<p>条件锁：每一个Lock可以有任意数据的Condition对象，Condition是与Lock绑定的，所以就有Lock的公平性特性：如果是公平锁，线程为按照FIFO的顺序从Condition.await中释放，如果是非公平锁，那么后续的锁竞争就不保证FIFO顺序了。<br>读写锁：Lock接口以及对象，使用它，很优雅的控制了竞争资源的安全访问，但是这种锁不区分读写，称这种锁为普通锁。为了提高性能，Java提供了读写锁，在读的地方使用读锁，在写的地方使用写锁，灵活控制，如果没有写锁的情况下，读是无阻塞的,在一定程度上提高了程序的执行效率。<br>Java中读写锁有个接口java.util.concurrent.locks.ReadWriteLock，也有具体的实现ReentrantReadWriteLock.<br>自旋锁：自旋锁可以使线程在没有取得锁的时候，不被挂起，而转去执行一个空循环，（即所谓的自旋，就是自己执行空循环），若在若干个空循环后，线程如果可以获得锁，则继续执行。若线程依然不能获得锁，才会被挂起。<br>可重入锁：可重入锁，也叫做递归锁，指的是同一线程 外层函数获得锁之后 ，内层递归函数仍然有获取该锁的代码，但不受影响。<br>在JAVA环境下 ReentrantLock 和synchronized 都是可重入锁。  </p>
+</blockquote>
+</li>
+<li>线程池ThreadPoolExecutor的实现原理？<br><strong>解答：</strong>   <blockquote>
+<p>线程池ThreadPoolExecutor通过维护一个核心线程池，将需要执行的任务加入进来，如果当前有空闲进程，就直接使用空闲线程执行，否则，将该任务放入排队队列，等待有空闲线程。该知识点以后准备通过阅读源码的方式学习。下面罗列一些重要的知识点。<br>corePoolSize：线程池中的核心线程数；<br>workQueue：任务的阻塞队列，缓存将要执行的Runnable任务，由各线程轮询该任务队列获取任务执行。<br>ThreadFactory: 线程工厂,用来创建线程的类。<br>Worker：线程池中的线程。<br>Task：线程池中的任务。<br>RejectedExecutionHandler： 线程池的拒绝策略。</p>
+</blockquote>
+<div></div></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java学习/" rel="tag">#java学习</a>
+          
+            <a href="/tags/数据结构/" rel="tag">#数据结构</a>
+          
+            <a href="/tags/线程/" rel="tag">#线程</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/01/angular_bootstrap/" rel="next" title="angularJS加载原理和双向数据绑定学习笔记">
+                <i class="fa fa-chevron-left"></i> angularJS加载原理和双向数据绑定学习笔记
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2019/01/05/成为JAVA顶尖程序员，先过了下面问题（解答一）/" data-title="成为JAVA顶尖程序员，先过了下面问题（解答一）" data-content="" data-url="http://yoursite.com/2019/01/05/成为JAVA顶尖程序员，先过了下面问题（解答一）/">
+  <div class="ds-share-inline">
+    <ul class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2019/01/05/成为JAVA顶尖程序员，先过了下面问题（解答一）/" data-title="成为JAVA顶尖程序员，先过了下面问题（解答一）" data-url="http://yoursite.com/2019/01/05/成为JAVA顶尖程序员，先过了下面问题（解答一）/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/actor.jpg" alt="Country boy">
+          <p class="site-author-name" itemprop="name">Country boy</p>
+          <p class="site-description motion-element" itemprop="description">How many times must a man look up,Before he can see the sky</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives/">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、数据结构与算法"><span class="nav-number">1.</span> <span class="nav-text">一、数据结构与算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、JAVA基础"><span class="nav-number">2.</span> <span class="nav-text">二、JAVA基础</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、JVM"><span class="nav-number">3.</span> <span class="nav-text">三、JVM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、多线程和并发"><span class="nav-number">4.</span> <span class="nav-text">四、多线程和并发</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Country boy</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"countryboy"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("OCXhhvuUszfd9WxkAVBXpg8Q-gzGzoHsz", "tInXTpkeFTOPD1e7SbvAOiRB");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+  
+
+
+</body>
+</html>
