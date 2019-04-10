@@ -1,0 +1,803 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="java学习,数据结构,线程,面试,蚂蚁金服,">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2">
+
+
+
+
+
+
+<meta name="description" content="最近在蚂蚁金服的前同事说他们那里很缺人，而我自己也想尝试一下，所以就有了被内推进行的一场蚂蚁金服的电话面试，但是因为在出差，准备不充足，第一次电话面试也有一点紧张，加上以前也确实做java不是很多，所以面试理所当然的挂了，下面重新梳理下当时的面试问题，继续努力了。  1.线程并发处理，除了加锁，还有那些方法？ 答：没太理解这里面试官想要了解的内容，如果是并发的话就只有加锁，其他还有原子操作，副本">
+<meta name="keywords" content="java学习,数据结构,线程,面试,蚂蚁金服">
+<meta property="og:type" content="article">
+<meta property="og:title" content="蚂蚁金服java后端电话面试">
+<meta property="og:url" content="http://yoursite.com/2019/04/10/蚂蚁金服java后端电话面试/index.html">
+<meta property="og:site_name" content="Mountains">
+<meta property="og:description" content="最近在蚂蚁金服的前同事说他们那里很缺人，而我自己也想尝试一下，所以就有了被内推进行的一场蚂蚁金服的电话面试，但是因为在出差，准备不充足，第一次电话面试也有一点紧张，加上以前也确实做java不是很多，所以面试理所当然的挂了，下面重新梳理下当时的面试问题，继续努力了。  1.线程并发处理，除了加锁，还有那些方法？ 答：没太理解这里面试官想要了解的内容，如果是并发的话就只有加锁，其他还有原子操作，副本">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-10T15:11:16.735Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="蚂蚁金服java后端电话面试">
+<meta name="twitter:description" content="最近在蚂蚁金服的前同事说他们那里很缺人，而我自己也想尝试一下，所以就有了被内推进行的一场蚂蚁金服的电话面试，但是因为在出差，准备不充足，第一次电话面试也有一点紧张，加上以前也确实做java不是很多，所以面试理所当然的挂了，下面重新梳理下当时的面试问题，继续努力了。  1.线程并发处理，除了加锁，还有那些方法？ 答：没太理解这里面试官想要了解的内容，如果是并发的话就只有加锁，其他还有原子操作，副本">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 'countryboy',
+      author: 'countryboy'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/10/蚂蚁金服java后端电话面试/">
+
+
+  <title> 蚂蚁金服java后端电话面试 | Mountains </title>
+</head>
+
+<body itemscope="" itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Mountains</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope="" itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                蚂蚁金服java后端电话面试
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2019-04-10T23:10:30+08:00" content="2019-04-10">
+              2019-04-10
+            </time>
+          </span>
+
+          
+            <span class="post-category">
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
+                  <a href="/categories/java学习-数据结构-线程-jvm-面试-蚂蚁金服/" itemprop="url" rel="index">
+                    <span itemprop="name">java学习 数据结构 线程 jvm 面试 蚂蚁金服</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2019/04/10/蚂蚁金服java后端电话面试/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/04/10/蚂蚁金服java后端电话面试/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2019/04/10/蚂蚁金服java后端电话面试/" class="leancloud_visitors" data-flag-title="蚂蚁金服java后端电话面试">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>最近在蚂蚁金服的前同事说他们那里很缺人，而我自己也想尝试一下，所以就有了被内推进行的一场蚂蚁金服的电话面试，但是因为在出差，准备不充足，第一次电话面试也有一点紧张，加上以前也确实做java不是很多，所以面试理所当然的挂了，下面重新梳理下当时的面试问题，继续努力了。</p>
+</blockquote>
+<h5 id="1-线程并发处理，除了加锁，还有那些方法？"><a href="#1-线程并发处理，除了加锁，还有那些方法？" class="headerlink" title="1.线程并发处理，除了加锁，还有那些方法？"></a>1.线程并发处理，除了加锁，还有那些方法？</h5><blockquote>
+<p>答：没太理解这里面试官想要了解的内容，如果是并发的话就只有加锁，其他还有原子操作，副本和不可变变量。但是感觉这里面试官问的好像是锁的方式，除了synchronized,还有volatile和ReentrantLock。 </p>
+</blockquote>
+<h5 id="2-如何创建线程池？"><a href="#2-如何创建线程池？" class="headerlink" title="2.如何创建线程池？"></a>2.如何创建线程池？</h5><blockquote>
+<p>答：这里其实也没太理解面试官的问题，感觉问的应该是ExecutorService的创建方式吧。java线程池一般都是ExecutorService来创建的，该类支持创建四种线程池，分别是：<br>1）newCachedThreadPool：创建一个可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程。（线程最大并发数不可控制）<br>2）newFixedThreadPool：创建一个定长线程池，可控制线程最大并发数，超出的线程会在队列中等待。<br>3）newScheduledThreadPool：创建一个定长线程池，支持定时及周期性任务执行。<br>4）newSingleThreadExecutor：创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。<br>但是他们底层其实都是通过ThreadPoolExecutor的构造函数来创建的。</p>
+</blockquote>
+<h5 id="3-线程池中核心线程数为10，最大线程数为30，任务队列为空，当前有10个线程，如果有一个新的任务，会如何处理"><a href="#3-线程池中核心线程数为10，最大线程数为30，任务队列为空，当前有10个线程，如果有一个新的任务，会如何处理" class="headerlink" title="3.线程池中核心线程数为10，最大线程数为30，任务队列为空，当前有10个线程，如果有一个新的任务，会如何处理"></a>3.线程池中核心线程数为10，最大线程数为30，任务队列为空，当前有10个线程，如果有一个新的任务，会如何处理</h5><blockquote>
+<p>答：这个我当时回答错了，当时回答的是会直接新创建一个线程来执行，但是实际如果当线程池小于核心线程的时候，是会先将任务添加到任务队列中，只有当任务队列满了之后，并且最大线程大于核心线程，才会创建新的线程。具体的关系如下:<br>1).当线程池小于corePoolSize时，新提交任务将创建一个新线程执行任务，即使此时线程池中存在空闲线程。<br>2).当线程池达到corePoolSize时，新提交任务将被放入workQueue中，等待线程池中任务调度执行<br>3).当workQueue已满，且maximumPoolSize&gt;corePoolSize时，新提交任务会创建新线程执行任务<br>4).当提交任务数超过maximumPoolSize时，新提交任务由RejectedExecutionHandler处理<br>5).当线程池中超过corePoolSize线程，空闲时间达到keepAliveTime时，关闭空闲线程<br>6).当设置allowCoreThreadTimeOut(true)时，线程池中corePoolSize线程空闲时间达到keepAliveTime也将关闭 </p>
+</blockquote>
+<h5 id="4-dubbo服务器中，如果有一台服务挂掉了，是如果判断的？"><a href="#4-dubbo服务器中，如果有一台服务挂掉了，是如果判断的？" class="headerlink" title="4.dubbo服务器中，如果有一台服务挂掉了，是如果判断的？"></a>4.dubbo服务器中，如果有一台服务挂掉了，是如果判断的？</h5><blockquote>
+<p>答：这里是我比较蠢了，我这里只回答了可能是心跳检测之类的，但是实际是长链接，zookeeper通过临时节点的方式来检查客户端是否存在，在服务注册的时候服务器会和zookeeper建立一个长链接，如果链接断开，那么就是服务挂掉了。网上搜索看到是使用Dubbo协议：采用NIO复用单一长连接，并使用线程池并发处理请求，减少握手和加大并发效率，在大文件传输时，单一连接会成为瓶颈</p>
+</blockquote>
+<h5 id="5-a转账给b的问题，如果是分布式的，该如何保证一致性？"><a href="#5-a转账给b的问题，如果是分布式的，该如何保证一致性？" class="headerlink" title="5.a转账给b的问题，如果是分布式的，该如何保证一致性？"></a>5.a转账给b的问题，如果是分布式的，该如何保证一致性？</h5><blockquote>
+<p>答： 这里学习网上的答案，我理解有这么几个点，分布式系统因为cap理论，很难做到强一致性，所以一般都是根据业务场景来达到最终一致性。<br>分布式事务有这么几种解决方案：<br>1）两阶段提交：a.事务协调器要求每个涉及到事务的数据库预提交(precommit)此操作，并反映是否可以提交.b.事务协调器要求每个数据库提交数据。<br>2）补偿事务：主要是针对每个操作，都要注册一个与其对应的确认和补偿（撤销）操作。a.Try 阶段主要是对业务系统做检测及资源预留b.Confirm 阶段主要是对业务系统做确认提交，Try阶段执行成功并开始执行 Confirm阶段时，默认 Confirm阶段是不会出错的。即：只要Try成功，Confirm一定成功。c.Cancel 阶段主要是在业务执行错误，需要回滚的状态下执行的业务取消，预留资源释放。<br>3）消息队列表：通过消息队列来完成事务的处理。每个节点处理完信息，并同时记录一笔消息的记录，每个节点完成了消息的业务处理内容，则记录完成，如果没有处理则可以进行失败消息重新处理或者重试，如果业务处理失败，则返回失败消息，进行事务回滚（这里没太看明白，如果要回滚，那是否要一直锁着资源？如果不是，那是否也需要实现补偿事务呢）。</p>
+</blockquote>
+<h5 id="6-什么条件会导致死锁，怎么解决？"><a href="#6-什么条件会导致死锁，怎么解决？" class="headerlink" title="6.什么条件会导致死锁，怎么解决？"></a>6.什么条件会导致死锁，怎么解决？</h5><blockquote>
+<p>答：死锁指的是系统中两个以上的进程由于争夺资源，而相互等待的现象。<br>造成死锁的必要条件有1、互斥条件2、请求和保持条件3、不剥夺条件4、环路等待条件。<br>死锁的解决：<br>〈1〉打破互斥条件。即允许进程同时访问某些资源。但是，有的资源是不允许被同时访问的，像打印机等等，这是由资源本身的属性所决定的。所以，这种办法并无实用价值。<br>〈2〉打破不可抢占条件。即允许进程强行从占有者那里夺取某些资源。就是说，当一个进程已占有了某些资源，它又申请新的资源，但不能立即被满足时，它必须释放所占有的全部资源，以后再重新申请。它所释放的资源可以分配给其它进程。这就相当于该进程占有的资源被隐蔽地强占了。这种预防死锁的方法实现起来困难，会降低系统性能。<br>〈3〉打破占有且申请条件。可以实行资源预先分配策略。即进程在运行前一次性地向系统申请它所需要的全部资源。如果某个进程所需的全部资源得不到满足，则不分配任何资源，此进程暂不运行。只有当系统能够满足当前进程的全部资源需求时，才一次性地将所申请的资源全部分配给该进程。由于运行的进程已占有了它所需的全部资源，所以不会发生占有资源又申请资源的现象，因此不会发生死锁。<br>〈4〉打破循环等待条件，实行资源有序分配策略。采用这种策略，即把资源事先分类编号，按号分配，使进程在申请，占用资源时不会形成环路。所有进程对资源的请求必须严格按资源序号递增的顺序提出。进程占用了小号资源，才能申请大号资源，就不会产生环路，从而预防了死锁。</p>
+</blockquote>
+<h5 id="7-mysql怎么进行分库分表？"><a href="#7-mysql怎么进行分库分表？" class="headerlink" title="7.mysql怎么进行分库分表？"></a>7.mysql怎么进行分库分表？</h5><blockquote>
+<p>答：这个问题因为我平时没有用过mysql数据库，所以没有回答，主要说了oracle的分区，但是其实原理应该是相通的，现在想象应该是可以回答的。一般分库可以按照读写分离来进行分库，分为主库和备用库，两个库之间再进行数据同步。也可以按照主键来垂直拆分，一般是按照取模的方式，来进行数据分库。表的话可以也可以进行垂直拆分和水平拆分，垂直拆分就是和分库一样，将表根据主键的进行范围或hash拆分，另外表也可以进行水平拆分，比如一个表有很多字段，其中有些字段是很经常用的，就可以单独拆成一个小表，来提交查询效率。</p>
+</blockquote>
+<h5 id="8-linux查询系统资源状态的命令有哪些？top命令有哪些参数"><a href="#8-linux查询系统资源状态的命令有哪些？top命令有哪些参数" class="headerlink" title="8.linux查询系统资源状态的命令有哪些？top命令有哪些参数"></a>8.linux查询系统资源状态的命令有哪些？top命令有哪些参数</h5><blockquote>
+<p>答： 系统资源主要有cpu、内存、硬盘、网络，所以对应的命令有，top、free、df -h、ifconfig、netstat等。top的主要参数：<br>d：指定更新的间隔，以秒计算。<br>q：没有任何延迟的更新。如果使用者有超级用户，则top命令将会以最高的优先序执行。<br>c：显示进程完整的路径与名称。<br>S：累积模式，会将己完成或消失的子行程的CPU时间累积起来。<br>s：安全模式。<br>i：不显示任何闲置(Idle)或无用(Zombie)的行程。<br>n：显示更新的次数，完成后将会退出。 </p>
+</blockquote>
+<h5 id="9-java的内存模型？"><a href="#9-java的内存模型？" class="headerlink" title="9.java的内存模型？"></a>9.java的内存模型？</h5><blockquote>
+<p>答： 当时回答的时候有点懵逼，没太听清楚他问的是什么，现在理解应该是问的java的jvm模型。分为方法区(Method Area)、java堆(Heap)、java栈(Stack)、程序计数器(PC Register)、本地方法栈(Native Method Stack)。其中堆内存又分为为新生代和旧生代，奇珍新生代又被划分为Eden空间和两块较小的Survivor空间。  </p>
+</blockquote>
+<h5 id="10-架构师需要关注哪些点？"><a href="#10-架构师需要关注哪些点？" class="headerlink" title="10.架构师需要关注哪些点？"></a>10.架构师需要关注哪些点？</h5><blockquote>
+<p>答：这里我当时回答的时候主要从业务架构和技术架构两方面进行来回答，感觉一般业务架构可能更多的是产品经理的工作吧，面试技术岗位，主要还是需要关心技术层面的东西。现在会想的话，我觉得架构师应该至少具备这些能力。<br>1）解决复杂技术问题的能力，首先我觉得架构师应该一定是一个优秀的程序员，具备某一方面的专业能力。<br>2）具备全面的专业能力，我觉得架构师应该对项目开发的整个周期的技术都应该是了解的，比如开发、发布、测试、运维等各方面。<br>3）架构师要具备技术判断能力，能够进行技术，框架选择的抉择等。<br>4）架构师一定要对负责的系统有很全面和深刻的掌握，可以帮忙开发和设计人员来提高系统设计的可拓展性和稳定性。<br>5）架构师要具备很强的沟通能力，可以和产品、开发、测试进行流畅的沟通。<br>6）架构师也要具备一定的项目管理能力，对于项目要有整体的掌控，随时都保证项目的进度和风险在可控制的范围内。</p>
+</blockquote>
+<h5 id="11-java常用的集合接口有哪些？"><a href="#11-java常用的集合接口有哪些？" class="headerlink" title="11.java常用的集合接口有哪些？"></a>11.java常用的集合接口有哪些？</h5><blockquote>
+<p>答： 集合主要有Map和Collection两大类。<br>Map主要有：<br>HashMap：最基本的Map类型，键值可以为null，是线程不安全的。<br>Hashtable：线程安全的Map，键值不能为空，但是因为实现了线程安全，所以效率较HashMap低。<br>ConcurrentHashMap：实现了线程安全的HashMap，根据key值，将一个HashMap分成了N个Segment，对每一段进行加锁，以此来提升了执行效率，默认是分成16段。<br>Collection主要有：<br>Vector：线程安全的集合。<br>ArrayList： 基于数组实现的，大小可变的数据集合。<br>LinkedList： 基于链式结构实现的集合，新增和删除的效率高于ArrayList。<br>HashSet： 基于HashMap实现的，所以不能有重复的数据。  </p>
+</blockquote>
+<h5 id="12-hashmap是线程安全的吗？"><a href="#12-hashmap是线程安全的吗？" class="headerlink" title="12.hashmap是线程安全的吗？"></a>12.hashmap是线程安全的吗？</h5><blockquote>
+<p>答： 肯定是线程不安全的。  </p>
+</blockquote>
+<h5 id="13-java中创建线程有几种方式？"><a href="#13-java中创建线程有几种方式？" class="headerlink" title="13.java中创建线程有几种方式？"></a>13.java中创建线程有几种方式？</h5><blockquote>
+<p>答：这里应该有三种，但是当时是忘了Callable的方式，通过前两种方式创建的线程是没有返回值的，Callable创建的可以有返回值。创建线程有三种方式，1.继承Thread类，并重写run方法2.定义runnable接口的实现类，并重写该接口的run()方法3.创建Callable接口的实现类，并实现call()方法，该call()方法将作为线程执行体，创建Callable实现类的实例，使用FutureTask类来包装Callable对象，使用FutureTask对象作为Thread对象的target创建并启动新线程。</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java学习/" rel="tag">#java学习</a>
+          
+            <a href="/tags/数据结构/" rel="tag">#数据结构</a>
+          
+            <a href="/tags/线程/" rel="tag">#线程</a>
+          
+            <a href="/tags/面试/" rel="tag">#面试</a>
+          
+            <a href="/tags/蚂蚁金服/" rel="tag">#蚂蚁金服</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/05/成为JAVA顶尖程序员，先过了下面问题（解答一）/" rel="next" title="成为JAVA顶尖程序员，先过了下面问题（解答一）">
+                <i class="fa fa-chevron-left"></i> 成为JAVA顶尖程序员，先过了下面问题（解答一）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2019/04/10/蚂蚁金服java后端电话面试/" data-title="蚂蚁金服java后端电话面试" data-content="" data-url="http://yoursite.com/2019/04/10/蚂蚁金服java后端电话面试/">
+  <div class="ds-share-inline">
+    <ul class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2019/04/10/蚂蚁金服java后端电话面试/" data-title="蚂蚁金服java后端电话面试" data-url="http://yoursite.com/2019/04/10/蚂蚁金服java后端电话面试/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/actor.jpg" alt="Country boy">
+          <p class="site-author-name" itemprop="name">Country boy</p>
+          <p class="site-description motion-element" itemprop="description">How many times must a man look up,Before he can see the sky</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives/">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-线程并发处理，除了加锁，还有那些方法？"><span class="nav-number">1.</span> <span class="nav-text">1.线程并发处理，除了加锁，还有那些方法？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-如何创建线程池？"><span class="nav-number">2.</span> <span class="nav-text">2.如何创建线程池？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-线程池中核心线程数为10，最大线程数为30，任务队列为空，当前有10个线程，如果有一个新的任务，会如何处理"><span class="nav-number">3.</span> <span class="nav-text">3.线程池中核心线程数为10，最大线程数为30，任务队列为空，当前有10个线程，如果有一个新的任务，会如何处理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-dubbo服务器中，如果有一台服务挂掉了，是如果判断的？"><span class="nav-number">4.</span> <span class="nav-text">4.dubbo服务器中，如果有一台服务挂掉了，是如果判断的？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-a转账给b的问题，如果是分布式的，该如何保证一致性？"><span class="nav-number">5.</span> <span class="nav-text">5.a转账给b的问题，如果是分布式的，该如何保证一致性？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-什么条件会导致死锁，怎么解决？"><span class="nav-number">6.</span> <span class="nav-text">6.什么条件会导致死锁，怎么解决？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-mysql怎么进行分库分表？"><span class="nav-number">7.</span> <span class="nav-text">7.mysql怎么进行分库分表？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-linux查询系统资源状态的命令有哪些？top命令有哪些参数"><span class="nav-number">8.</span> <span class="nav-text">8.linux查询系统资源状态的命令有哪些？top命令有哪些参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#9-java的内存模型？"><span class="nav-number">9.</span> <span class="nav-text">9.java的内存模型？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#10-架构师需要关注哪些点？"><span class="nav-number">10.</span> <span class="nav-text">10.架构师需要关注哪些点？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#11-java常用的集合接口有哪些？"><span class="nav-number">11.</span> <span class="nav-text">11.java常用的集合接口有哪些？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#12-hashmap是线程安全的吗？"><span class="nav-number">12.</span> <span class="nav-text">12.hashmap是线程安全的吗？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#13-java中创建线程有几种方式？"><span class="nav-number">13.</span> <span class="nav-text">13.java中创建线程有几种方式？</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Country boy</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"countryboy"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("OCXhhvuUszfd9WxkAVBXpg8Q-gzGzoHsz", "tInXTpkeFTOPD1e7SbvAOiRB");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+  
+
+
+</body>
+</html>
